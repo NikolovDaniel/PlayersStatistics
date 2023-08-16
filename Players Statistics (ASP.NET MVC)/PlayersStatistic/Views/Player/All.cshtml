@@ -1,0 +1,82 @@
+﻿@model StatisticsViewModel;
+
+@{
+    ViewData["Title"] = "Players";
+}
+
+<body style="background-image: url('https://i.ibb.co/yVx3JtY/white-painted-wall-texture-background-1.jpg') ">
+    @if (Model.Players.Count() > 0)
+    {
+        <div class="container-fluid pt-5">
+            <h3 class="text-center">Players</h3>
+            <div class="row justify-content-sm-center pt-3">
+                <div class="col-sm-3">
+                    <div class="btn-group w-100">
+                        <button style="background-color: #D95966;" class="btn dropdown-toggle w-100 btn-outline-dark" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Select Player
+                        </button>
+                        <ul class="dropdown-menu w-100 text-center">
+                            @foreach (var player in Model.Players)
+                            {
+                                <li><a class="dropdown-item" href="/Player/Details/@player.Id">@player.Name (ID: @player.NumberId)</a></li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <h3 class="text-center">Best Players</h3>
+            <div class="row pt-2">
+                @foreach (var player in Model.BestPlayers)
+                {
+                    <div class="col-sm-3 pt-2 text-center">
+                        <div class="card">
+                            <img class="card-img-top" src="https://www.w3schools.com/bootstrap4/img_avatar1.png" alt="Card image">
+                            <div class="card-img-overlay text-center">
+                                <h4 class="card-title">@player.Name</h4>
+                            </div>
+                            <div class="card-body" style="background-color: #F0E7D5;">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <h5>Wins: @player.Wins</h5>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <h5>Loses: @player.Loses</h5>
+                                    </div>
+                                </div>
+                                @if (player.Winrate == 100)
+                                {
+                                    <h5>Winrate: @player.Winrate%</h5>
+                                }
+                                else if (player.Winrate < 100 && player.Winrate > 50)
+                                {
+                                    <h5>Winrate: @player.Winrate%</h5>
+                                }
+                                else
+                                {
+                                    <h5>Winrate: @player.Winrate%</h5>
+                                }
+                            </div>
+                            <div class="card-footer" style="background-color: #474541;">
+                                <a href="/Player/Details/@player.Id" style="background-color: #DFDFDF;" class="btn stretched-link btn-outline-dark">See Player</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="row justify-content-sm-center">
+            <h3 class="text-center">No available Players!</h3>
+            <div class="col-sm-6 text-center">
+                <form action="/Player/Create/">
+                    <button style="background-color: #DFDFDF;" class="btn btn-lg btn-outline-dark" type="submit">
+                        Add Player
+                    </button>
+                </form>
+            </div>
+        </div>
+    }
+</body>

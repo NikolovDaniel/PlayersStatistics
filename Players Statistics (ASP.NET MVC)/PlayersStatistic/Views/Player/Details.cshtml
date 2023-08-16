@@ -1,0 +1,72 @@
+﻿@model PlayerMatchesViewModel;
+
+@{
+    ViewData["Title"] = $"{Model.Name}";
+}
+
+<body style="background-image: url('https://i.ibb.co/yVx3JtY/white-painted-wall-texture-background-1.jpg')">
+    <div class="container-fluid pt-5">
+        <div class="row">
+            <div class="col-sm-4 text-center">
+                <div class="card">
+                    <img class="card-img-top" src="https://www.w3schools.com/bootstrap4/img_avatar1.png" alt="Card image">
+                    <div class="card-img-overlay text-center">
+                        <h4 class="card-title">@Model.Name</h4>
+                    </div>
+                    <div class="card-body" style="background-color: #F0E7D5">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <h5>Wins: @Model.Wins</h5>
+                            </div>
+                            <div class="col-sm-4">
+                                <h5>Loses: @Model.Loses</h5>
+                            </div>
+                            <div class="col-sm-4">
+                                <h5>Winrate: @Model.Winrate%</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-5">
+                <div class="card bg-transparent" style="border:none">
+                    <div class="card-body">
+                        <div class="card-title text-center">
+                            <h3>Description</h3>
+                        </div>
+                        <div class="card-text" style="font-style:italic">
+                            <h5>@Model.Description</h5>
+                            <h5 class="pt-5">Age: @Model.Age</h5>
+                            <h5>Height: @Model.Height cm</h5>
+                            <h5>Birth place: @Model.BirthPlace</h5>
+                            <h5>Hand: @Model.Hand-Handed</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="card bg-transparent" style="border:none">
+                    <div class="card-body">
+                        <div class="card-title text-center">
+                            <h4>Matches</h4>
+                        </div>
+                        <div class="card-text" style="font-style:italic">
+                            <div class="btn-group w-100">
+                                <button style="background-color: #D95966" class="btn btn-primary dropdown-toggle w-100 text-dark btn-outline-dark" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Select Match
+                                </button>
+                                <ul class="dropdown-menu w-100 text-center">
+                                    @foreach (var match in Model.Matches.OrderByDescending(m => m.Date.Date))
+                                    {
+                                        string result = $"{match.Winner} vs {match.Players.First(p => p.Name != match.Winner).Name}";
+                                        <li><a class="dropdown-item" href="/Match/Details/@match.Id">@result</a></li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

@@ -1,0 +1,72 @@
+﻿@model PlayerViewModel
+
+@{
+    ViewData["Title"] = "Add Player";
+}
+
+<body style="background-image: url('https://i.ibb.co/yVx3JtY/white-painted-wall-texture-background-1.jpg') ">
+    <div class="container-fluid pt-5">
+        <div class="row justify-content-sm-center lead text-justify" style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: large;">
+            <form asp-controller="Player" asp-action="Create" method="post">
+                <div class="row justify-content-sm-center form-group">
+                    <div class="offset-2 col-sm-4">
+                        <h3 class="text-center">Add Player</h3>
+                    </div>
+                </div>
+                <div class="row justify-content-sm-center form-group pt-5">
+                    <label class="col-sm-2 col-form-label">Name:</label>
+                    <div class="col-sm-4">
+                        <input asp-for="@Model.Name" type="text" class="form-control" placeholder="Name">
+                        <span asp-validation-for="@Model.Name" class="small text-danger"></span>
+                    </div>
+                </div>
+                <div class="row justify-content-sm-center form-group pt-2">
+                    <label class="col-sm-2 col-form-label">Age:</label>
+                    <div class="col-sm-4">
+                        <input asp-for="@Model.Age" value="" type="number" class="form-control" placeholder="Age">
+                        <span asp-validation-for="@Model.Age" class="small text-danger"></span>
+                    </div>
+                </div>
+                <div class="row justify-content-sm-center form-group pt-2">
+                    <label class="col-sm-2 col-form-label">Height:</label>
+                    <div class="col-sm-4">
+                        <input asp-for="@Model.Height" value="" type="number" class="form-control" placeholder="Height in centimeters">
+                        <span asp-validation-for="@Model.Height" class="small text-danger"></span>
+                    </div>
+                </div>
+                <div class="row justify-content-sm-center form-group pt-2">
+                    <label class="col-sm-2 col-form-label">R or L Handed:</label>
+                    <div class="col-sm-4">
+                        <select asp-for="@Model.Hand" class="form-select">
+                            <option value="Right" selected>Right-Handed</option>
+                            <option value="Left">Left-Handed</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row justify-content-sm-center form-group pt-2">
+                    <label class="col-sm-2 col-form-label">Birthplace:</label>
+                    <div class="col-sm-4">
+                        <input asp-for="@Model.BirthPlace" type="text" class="form-control" placeholder="Birthplace">
+                        <span asp-validation-for="@Model.BirthPlace" class="small text-danger"></span>
+                    </div>
+                </div>
+                <div class="row justify-content-sm-center form-group pt-2">
+                    <label class="col-sm-2 col-form-label">Description:</label>
+                    <div class="col-sm-4">
+                        <textarea asp-for="@Model.Description" rows="4" class="form-control" placeholder="Description"></textarea>
+                        <span asp-validation-for="@Model.Description" class="small text-danger"></span>
+                    </div>
+                </div>
+                <div class="row justify-content-sm-center form-group pt-4">
+                    <div class="offset-2 col-sm-4 text-center">
+                        <button style="background-color: #DFDFDF; " type="submit" class="btn btn-lg btn-block btn-outline-dark">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

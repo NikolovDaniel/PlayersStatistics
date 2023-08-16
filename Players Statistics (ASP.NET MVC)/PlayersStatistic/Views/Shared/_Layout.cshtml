@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Player Statistics</title>
+    <script src="https://kit.fontawesome.com/97eee30641.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/PlayersStatistic.styles.css" asp-append-version="true" />
+</head>
+<body class="mb-0">
+    <header>
+        <nav style="background-color: #DFDFDF;" class="navbar navbar-expand-lg navbar-light border-bottom shadow-lg static-top">
+            <div class="container">
+                <a class="navbar-brand" href="/Home" style="font-weight: 500; align-items: center; display: flex;">
+                    <img class="d-inline-block align-top" src="~/badmintonRacket.svg" alt="..." height="50" width="50">
+                    Player Statistics
+                </a>
+                <button class="navbar-toggler border border-dark" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto fs-5" style="font-weight: 500;">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Player" asp-action="All">Players</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-dark" style="font-weight: 500" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Create
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Player" asp-action="Create">Add Player</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" asp-area="" asp-controller="Match" asp-action="Create">Add Match</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="About">ABOUT</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="text-center text-lg-start bg-light text-muted">
+        <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+            <div class="me-5 d-none d-lg-block">
+                <span>Get connected with me on Social Networks:</span>
+            </div>
+            <div>
+                <a href="https://www.linkedin.com/in/daniel-nikolov-1090aa233/" target="_blank" class="me-4 text-reset">
+                    <i class="fab fa-linkedin"></i>
+                    LinkedIn
+                </a>
+                <a href="https://github.com/NikolovDaniel" target="_blank" class="me-4 text-reset">
+                    <i class="fab fa-github"></i>
+                    GitHub
+                </a>
+            </div>
+        </section>
+        <section class="">
+            <div class="container text-center text-md-start mt-5">
+                <div class="row mt-3">
+                    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            <i class="fas fa-gem me-3"></i>Daniel Nikolov
+                        </h6>
+                        <p>
+                            I am a self-learning person. I am studying everything related to the .NET Family and building various Web Applications to exercise my knowledge.
+                        </p>
+                    </div>
+                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                        <h6 class="text-uppercase fw-bold mb-4">
+                            Projects
+                        </h6>
+                        <p>
+                            <a target="_blank" href="https://github.com/NikolovDaniel/Projects/tree/master/Players%20Statistics%20(ASP.NET%20MVC)" class="text-reset">Player Statistics</a>
+                        </p>
+                        <p>
+                            <a target="_blank" href="https://github.com/NikolovDaniel/Projects/tree/master/Schedule%20Creator%20(ASP.NET%20MVC)" class="text-reset">Schedule Creator</a>
+                        </p>
+                        <p>
+                            <a target="_blank" href="https://github.com/NikolovDaniel/Projects/tree/master/Knights%20and%20Dragons%20(Console%20Application)" class="text-reset">Knights and Dragons</a>
+                        </p>
+                        <p>
+                            <a target="_blank" href="https://github.com/NikolovDaniel/Projects/tree/master/Mu%20Console%20Game%20(Consol%20Application)" class="text-reset">Mu Game</a>
+                        </p>
+                    </div>
+                    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                        <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+                        <p><i class="fas fa-home me-3"></i> Sofia, Bulgaria</p>
+                        <p>
+                            <i class="fas fa-envelope me-3"></i>
+                            kace123@abv.bg
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+            © 2023 Copyright:
+            <a class="text-reset fw-bold" target="_blank" href="https://github.com/NikolovDaniel">github.com/NikolovDaniel</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
+

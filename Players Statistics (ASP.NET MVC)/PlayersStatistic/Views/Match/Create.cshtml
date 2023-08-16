@@ -1,0 +1,109 @@
+﻿@model MatchViewModel;
+
+@{
+    ViewData["Title"] = "Add Match";
+}
+
+<body style="background-image: url('https://i.ibb.co/yVx3JtY/white-painted-wall-texture-background-1.jpg')">
+    @if (Model.Players.Count() > 1)
+    {
+        <div class="container-fluid pt-5">
+            <form asp-controller="Match" asp-action="Create" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger text-center"></div>
+                <div class="row justify-content-sm-center lead text-justify" style="font-family: Georgia, 'Times New Roman', Times, serif; font-size: large;">
+                    <div class="col-sm-6">
+                        <div class="card bg-transparent" style="border: none; border-radius: 5%;">
+                            <div class="card-heading">
+                                <h3 class="text-center">Add Match</h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="form-group row">
+                                    <label for="Players" class="col-sm-2 col-form-label">Players:</label>
+                                    <div class="col-sm-4">
+                                        <select asp-for="@Model.PlayerOneId" class="form-select text-center">
+                                            @foreach (var player in Model.Players)
+                                            {
+                                                <option value="@player.Id">@player.Name ID:@player.NumberId</option>
+                                            }
+                                        </select>
+                                    </div>
+                                    <label class="col-sm-2 col-form-label text-center">VS</label>
+                                    <div class="col-sm-4">
+                                        <select asp-for="@Model.PlayerTwoId" class="form-select text-center">
+                                            @foreach (var player in Model.Players)
+                                            {
+                                                <option value="@player.Id">@player.Name ID:@player.NumberId</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row pt-2">
+                                    <label class="col-sm-2 col-form-label">Score:</label>
+                                    <div class="col-sm-4">
+                                        <select asp-for="@Model.PlayerOneSets" class="form-select text-center" aria-label="Default select example">
+                                            <option selected>Choose Player 1 sets</option>
+                                            <option value="0">0 Sets</option>
+                                            <option value="1">1 Set</option>
+                                            <option value="2">2 Sets</option>
+                                        </select>
+                                    </div>
+                                    <label class="col-sm-2 col-form-label text-center">-</label>
+                                    <div class="col-sm-4">
+                                        <select asp-for="@Model.PlayerTwoSets" class="form-select text-center" aria-label="Default select example">
+                                            <option selected>Choose Player 2 sets</option>
+                                            <option value="0">0 Sets</option>
+                                            <option value="1">1 Set</option>
+                                            <option value="2">2 Sets</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row pt-2">
+                                    <label class="col-sm-2 col-form-label">Duration:</label>
+                                    <div class="col-sm-10">
+                                        <input asp-for="@Model.Duration" class="form-control border rounded text-center" value="" type="number" placeholder="Duration in minutes" />
+                                        <span asp-validation-for="@Model.Duration" class="small text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group row pt-2">
+                                    <label class="col-sm-2 col-form-label">Location:</label>
+                                    <div class="col-sm-10">
+                                        <input asp-for="@Model.Location" class="form-control border rounded text-center" type="text" placeholder="Location of the match..." />
+                                        <span asp-validation-for="@Model.Location" class="small text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group row pt-2">
+                                    <label class="col-sm-2 col-form-label">Date:</label>
+                                    <div class="col-sm-10">
+                                        <input asp-for="@Model.Date" class="form-control border border-dark rounded text-center" style="width:100%" type="date" value="2023-05-23" />
+                                    </div>
+                                </div>
+                                <div class="row justify-content-sm-center form-group pt-4">
+                                    <div class="col-sm-4 text-center">
+                                        <button style="background-color: #DFDFDF; " type="submit" class="btn btn-lg btn-block btn-outline-dark">Submit</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    }
+    else
+    {
+        <div class="row justify-content-sm-center">
+            <h3 class="text-center">No available Players! There should be at least 2 Players.</h3>
+            <div class="col-sm-6 text-center">
+                <form action="/Player/Create/">
+                    <button style="background-color: #BBD9E3" class="btn btn-lg btn-outline-dark" type="submit">
+                        Add Player
+                    </button>
+                </form>
+            </div>
+        </div>
+    }
+</body>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
